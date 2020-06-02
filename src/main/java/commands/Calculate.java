@@ -27,6 +27,6 @@ public class Calculate extends ListenerAdapter {
     }
 
     private void sendMessageCalculate(GuildMessageReceivedEvent e) {
-        e.getChannel().sendMessage("To use this command, type: !calculate [add] [first-num] [second-num] ...").queue();
+        e.getChannel().sendMessage("Pour utiliser cette commande, essaye : !calculate [add] [first-num] [second-num] ...").queue();
     }
 }

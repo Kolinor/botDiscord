@@ -51,7 +51,7 @@ public class PlayerManager {
             public void trackLoaded(AudioTrack track) {
                 channel.sendMessage("Ajouter à la queue " + track.getInfo().title).queue();
 
-                play(musicManager, track);
+                play(musicManager, track, false);
             }
 
             @Override
@@ -63,7 +63,7 @@ public class PlayerManager {
                 }
 
                 channel.sendMessage("Ajouter à la queue " + firstTrack.getInfo().title + " (première music de la playlist " + playlist.getName() + ")").queue();
-                play(musicManager, firstTrack);
+                play(musicManager, firstTrack, false);
             }
 
             @Override
@@ -78,7 +78,8 @@ public class PlayerManager {
         });
     }
 
-    private void play(GuildMusicManager musicManager, AudioTrack track) {
+    public void play(GuildMusicManager musicManager, AudioTrack track, Boolean directStart) {
+        if (directStart) tracks.clear();
         musicManager.scheduler.queue(track);
         tracks.add(track);
     }
@@ -98,9 +99,7 @@ public class PlayerManager {
 
     public void getQueue(TextChannel channel) {
         String track = "";
-//        for (AudioTrack audioTrack : tracks) {
-//            track += audioTrack.getInfo(). + audioTrack.getInfo().title;
-//        }
+
         for (int i = 0; i < tracks.size(); i++) {
             String title = tracks.get(i).getInfo().title;
             track += i + " : " + title + "\n";
