@@ -11,8 +11,7 @@ import javax.security.auth.login.LoginException;
 import java.io.IOException;
 
 public class Bot {
-
-    public static void main(String args[]) throws LoginException, IOException, InterruptedException {
+    public static void main(String[] args) throws LoginException, IOException, InterruptedException {
 
         String pathToken = "C:\\Users\\Niloc\\IdeaProjects\\botDiscord\\src\\main\\java\\File\\token.txt";
         File file = new File(pathToken);
@@ -38,6 +37,7 @@ public class Bot {
         jda.addEventListener(new Leave());
         jda.addEventListener(new Ping());
         jda.addEventListener(new Dice());
+        jda.addEventListener(new Sort());
 
         //
         // Set bot

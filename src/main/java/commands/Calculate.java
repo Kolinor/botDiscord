@@ -9,19 +9,21 @@ public class Calculate extends ListenerAdapter {
         String[] messageSent = e.getMessage().getContentRaw().split(" ");
 
         if (messageSent[0].equalsIgnoreCase("!calculate")) {
-            if (messageSent.length == 1) {
-                sendMessageCalculate(e);
-            }
-            else if (messageSent[1].equalsIgnoreCase("add")) {
-                if (messageSent.length == 2) {
-                    sendMessageCalculate(e);
-                } else {
-                    float res = 0;
-                    for (int i = 2; i < messageSent.length; i++) {
-                        res += Float.parseFloat(messageSent[i]);
+
+            switch(messageSent[1]) {
+                case "add":
+                    if (messageSent.length == 2) {
+                        sendMessageCalculate(e);
+                    } else {
+                        float res = 0;
+                        for (int i = 2; i < messageSent.length; i++) {
+                            res += Float.parseFloat(messageSent[i]);
+                        }
+                        e.getChannel().sendMessage(" The resultat is : " + res).queue();
                     }
-                    e.getChannel().sendMessage(" The resultat is : " + res).queue();
-                }
+                    break;
+//                case "sub":
+
             }
         }
     }
