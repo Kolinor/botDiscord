@@ -24,6 +24,11 @@
             <artifactId>lavaplayer</artifactId>
             <version>1.3.49</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.rithms</groupId>
+            <artifactId>riot-api-java</artifactId>
+            <version>4.3.0</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -35,6 +40,10 @@
             <id>central</id>
             <name>bintray</name>
             <url>https://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 
