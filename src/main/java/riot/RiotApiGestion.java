@@ -7,11 +7,20 @@ import net.rithms.riot.api.endpoints.summoner.dto.Summoner;
 import net.rithms.riot.constant.Platform;
 
 public class RiotApiGestion {
+    private ApiConfig config;
+    private RiotApi api;
+
+
+    public RiotApiGestion(String apiRiotToken) {
+        config = new ApiConfig().setKey(apiRiotToken);
+        api = new RiotApi(config);
+    }
+
+    public RiotApiGestion getRiotApiGestion() {
+        return this;
+    }
 
     public StringBuilder getInformation() throws RiotApiException {
-        ApiConfig config = new ApiConfig().setKey("RGAPI-685059cc-faf3-4619-b5fd-59df63b01ed3");
-        RiotApi api = new RiotApi(config);
-
         StringBuilder str = new StringBuilder();
         Summoner summoner = api.getSummonerByName(Platform.EUW, "Kolinor");
         str.append("Name: " + summoner.getName()).append("/n");

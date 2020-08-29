@@ -12,11 +12,12 @@ import javax.security.auth.login.LoginException;
 import java.io.IOException;
 
 public class Bot {
-    public static void main(String[] args) throws LoginException, IOException, InterruptedException, RiotApiException {
+    public static void main(String[] args) throws LoginException, IOException, InterruptedException {
 
-        String pathToken = "C:\\Users\\Niloc\\IdeaProjects\\botDiscord\\src\\main\\java\\File\\token.txt";
-        File file = new File(pathToken);
-        JDA jda = new JDABuilder(file.read()).build();
+        String pathTokens = "C:\\Users\\Niloc\\IdeaProjects\\botDiscord\\src\\main\\java\\File\\token.txt";
+        File file = new File(pathTokens);
+        JDA jda = new JDABuilder(file.getDiscordToken()).build();
+        RiotApiGestion riotApiGestion = new RiotApiGestion(file.getApiRiotToken());
 
 
         jda.awaitReady();
@@ -41,7 +42,7 @@ public class Bot {
         jda.addEventListener(new Ping());
         jda.addEventListener(new Dice());
         jda.addEventListener(new Sort());
-        jda.addEventListener(new Riot());
+        jda.addEventListener(new Riot(riotApiGestion.getRiotApiGestion()));
 
         //
         // Set bot
