@@ -19,7 +19,6 @@ public class Bot {
         JDA jda = new JDABuilder(file.getDiscordToken()).build();
         RiotApiGestion riotApiGestion = new RiotApiGestion(file.getApiRiotToken());
 
-
         jda.awaitReady();
 
 
